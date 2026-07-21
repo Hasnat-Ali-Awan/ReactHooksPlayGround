@@ -1,0 +1,28 @@
+.demo-card {
+    width: 350px;
+
+    margin: 20px 0;
+    padding: 20px;
+
+    background-color: #1e293b;
+    color: white;
+
+    border: 1px solid #334155;
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.demo-card-title {
+    margin-bottom: 20px;
+
+    text-align: center;
+
+    color: #60a5fa;
+}
+
+.demo-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

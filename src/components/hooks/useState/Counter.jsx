@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DemoCard from "../../common/DemoCard";
 import "./Counter.css";
 
 function Counter() {
@@ -20,14 +21,12 @@ function Counter() {
 
 
     return (
-        <div className="counter-container">
-            <h2 className="counter-title">Counter Example</h2>
+        <DemoCard title="Counter Example">
 
-            <p className="counter-value">
-                Current Count: {count}
-            </p>
+            <p>Current Count: {count}</p>
 
             <div className="counter-buttons">
+
                 <button
                     className="counter-button"
                     onClick={() => increase()}
@@ -44,26 +43,25 @@ function Counter() {
 
                 <button
                     className="counter-button"
-                    onClick={() => decrease()}
-                >
+                    onClick={() => decrease()}>
                     -1
                 </button>
 
                 <button
                     className="counter-button"
-                    onClick={() => decrease(5)}
-                >
+                    onClick={() => decrease(5)}>
                     -5
                 </button>
 
                 <button
                     className="counter-button reset-button"
-                    onClick={reset}
-                >
+                    onClick={reset}>
                     Reset
                 </button>
+
             </div>
-        </div>
+
+        </DemoCard>
     );
 }
 

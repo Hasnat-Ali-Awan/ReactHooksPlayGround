@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import "./LikeButton.css"
+import DemoCard from "../../common/DemoCard";
 
 function LikeButton() {
     const [isLiked, setLiked] = useState(false);
@@ -10,18 +11,20 @@ function LikeButton() {
     }
 
     return (
-        <div className="like-container">
+        <DemoCard title="Like Button">
+
             <button
                 className={`like-button ${isLiked ? "liked" : ""}`}
-                onClick={handleLike}>
-                {isLiked ? (
-                    <FaHeart color="red" />
-                ) : (
-                    <FaHeart />
-                )}
+                onClick={handleLike}
+            >
+                {isLiked ? <FaHeart color="red" /> : <FaHeart />}
             </button>
 
-        </div>
+            <p className="like-status">
+                {isLiked ? "Liked ❤️" : "Not Liked 🤍"}
+            </p>
+
+        </DemoCard>
     );
 }
 
