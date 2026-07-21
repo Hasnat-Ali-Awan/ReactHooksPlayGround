@@ -38,3 +38,25 @@
     background: #334155;
     color: #60a5fa;
 }
+
+.sidebar-link {
+    display: block;
+
+    text-decoration: none;
+
+    color: white;
+
+    padding: 8px;
+
+    border-radius: 6px;
+
+    transition: .3s;
+}
+
+.sidebar-link:hover {
+    background: #334155;
+}
+
+.sidebar-link.active {
+    background: #3b82f6;
+}

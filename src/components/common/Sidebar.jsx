@@ -1,5 +1,6 @@
 import hooksData from "../../data/hooksData";
 import "./Sidebar.css";
+import { NavLink } from "react-router-dom";
 
 function Sidebar() {
     return (
@@ -13,7 +14,11 @@ function Sidebar() {
                     <ul>
                         {section.hooks.map((hook) => (
                             <li key={hook.name}>
-                                {hook.name}
+                                <NavLink
+                                    to={hook.path}
+                                    className="sidebar-link">
+                                    {hook.name}
+                                </NavLink>
                             </li>
                         ))}
                     </ul>
