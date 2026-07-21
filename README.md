@@ -1,18 +1,76 @@
-# React + Vite
+# React Hooks Playground
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small interactive sandbox for experimenting with React Hooks, patterns, and micro-examples using Vite.
 
-Currently, two official plugins are available:
+This repository is intended as a developer learning and experimentation workspace — add small, focused examples of hooks, compare implementations, and keep utilities that help explore React behaviors.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Features
 
-## React Compiler
+- Lightweight Vite + React setup with fast HMR for rapid iteration
+- Examples and demos focused on React Hooks (useState, useEffect, useRef, useReducer, custom hooks)
+- ESLint configuration to keep examples readable and consistent
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Getting started
 
-Note: This will impact Vite dev & build performances.
+Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js 16+ (or the version specified by the project)
+- npm or yarn
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Quick start
+
+1. Install dependencies
+
+   npm install
+
+2. Start the development server
+
+   npm run dev
+
+3. Open the app in your browser (usually at http://localhost:5173)
+
+Build and preview
+
+- Build for production:
+
+  npm run build
+
+- Preview the production build locally:
+
+  npm run preview
+
+Available scripts
+
+- dev: start Vite dev server
+- build: create a production build
+- preview: preview the production build
+- lint: run ESLint (if configured in package.json)
+
+Project structure (typical)
+
+- src/ — application source code and examples
+  - examples/ — small example apps and hook demos
+  - components/ — reusable UI components used by examples
+  - hooks/ — custom hooks and utilities
+- public/ — static assets
+- README.md — this file
+
+Contributing
+
+Contributions are welcome. Keep examples small and focused:
+
+- Add a new folder under src/examples with a descriptive name
+- Include a brief README or comment explaining the goal of the example
+- Follow existing linting rules and project conventions
+
+License
+
+This repository is provided for learning and experimentation. Check LICENSE (if present) for licensing details.
+
+Acknowledgements
+
+Built with Vite and React. This project bootstraps a minimal developer playground to prototype and learn React Hooks.
+
+Maintainer
+
+This repository is maintained as part of the ReactHooksPlayGround collection. For questions or suggestions, open an issue or submit a PR.
