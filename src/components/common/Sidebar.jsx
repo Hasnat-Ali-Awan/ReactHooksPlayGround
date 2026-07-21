@@ -12,7 +12,9 @@ function Sidebar() {
 
                     <ul>
                         {section.hooks.map((hook) => (
-                            <li key={hook}>{hook}</li>
+                            <li key={hook.name}>
+                                {hook.name}
+                            </li>
                         ))}
                     </ul>
                 </div>
