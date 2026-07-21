@@ -27,7 +27,7 @@ Quick start
 
    npm run dev
 
-3. Open the app in your browser (usually at http://localhost:5173)
+3. Open the app in your browser by clicking the link in terminal (ctrl+left click)
 
 Build and preview
 
