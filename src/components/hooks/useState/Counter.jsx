@@ -4,13 +4,13 @@ function Counter() {
     const [count, setCount] = useState(0);
 
     function increase(value = 1) {
-        setCount((count) => count + value);
+        setCount((preCount) => preCount + value);
     }
 
     function decrease(value = 1) {
-        if ((count - value) >= 0) {
-            setCount((count) => count - value);
-        }
+
+        setCount((prevCount) => Math.max(prevCount - value, 0));
+
     }
 
     function reset() {
