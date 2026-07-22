@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import hooksData from "../../data/hooksData";
@@ -10,23 +10,6 @@ function Sidebar({ search = "" }) {
     );
 
     const query = search.trim().toLowerCase();
-
-    useEffect(() => {
-        if (!query) return;
-
-        setOpenSections((prev) => {
-            const next = { ...prev };
-            hooksData.forEach((section) => {
-                const hasMatch = section.hooks.some(
-                    (hook) =>
-                        hook.name.toLowerCase().includes(query) ||
-                        hook.description.toLowerCase().includes(query)
-                );
-                if (hasMatch) next[section.category] = true;
-            });
-            return next;
-        });
-    }, [query]);
 
     function toggleSection(category) {
         setOpenSections((prev) => ({
@@ -49,7 +32,8 @@ function Sidebar({ search = "" }) {
 
                 if (query && hooks.length === 0) return null;
 
-                const isOpen = openSections[section.category];
+                // while searching, keep matching sections open
+                const isOpen = query ? true : openSections[section.category];
 
                 return (
                     <section key={section.category} className="sidebar-section">
