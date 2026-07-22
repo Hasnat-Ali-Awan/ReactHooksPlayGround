@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
 import hooksData from "../data/hooksData";
+import hookExplanations from "../data/hookExplanations";
+import HookExplanation from "../components/common/HookExplanation";
 import "./HookDetails.css";
 
 import UseStateDemo from "../components/hooks/useState";
@@ -62,6 +64,7 @@ function HookDetails() {
         .find((item) => item.path === location.pathname);
 
     const Demo = demos[hook?.name];
+    const explanation = hookExplanations[hook?.name];
 
     return (
         <section className="hook-details">
@@ -74,6 +77,8 @@ function HookDetails() {
             <div className="demo-grid">
                 {Demo ? <Demo /> : <p>Demo coming soon...</p>}
             </div>
+
+            <HookExplanation name={hook?.name} info={explanation} />
         </section>
     );
 }

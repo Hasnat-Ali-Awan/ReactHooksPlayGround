@@ -4,6 +4,14 @@ import { ChevronDown } from "lucide-react";
 import hooksData from "../../data/hooksData";
 import "./Sidebar.css";
 
+function getCategoryByPath(pathname) {
+    return (
+        hooksData.find((section) =>
+            section.hooks.some((hook) => hook.path === pathname)
+        )?.category ?? null
+    );
+}
+
 function Sidebar({ search = "" }) {
     const location = useLocation();
 
@@ -11,12 +19,18 @@ function Sidebar({ search = "" }) {
         Object.fromEntries(hooksData.map((section) => [section.category, true]))
     );
 
-    const query = search.trim().toLowerCase();
+    const [lastPath, setLastPath] = useState(location.pathname);
 
-    const activeCategory =
-        hooksData.find((section) =>
-            section.hooks.some((hook) => hook.path === location.pathname)
-        )?.category ?? null;
+    // when route changes (search click / sidebar link), open that section
+    if (location.pathname !== lastPath) {
+        setLastPath(location.pathname);
+        const category = getCategoryByPath(location.pathname);
+        if (category) {
+            setOpenSections((prev) => ({ ...prev, [category]: true }));
+        }
+    }
+
+    const query = search.trim().toLowerCase();
 
     useEffect(() => {
         const activeLink = document.querySelector(".sidebar-link.active");
@@ -44,12 +58,7 @@ function Sidebar({ search = "" }) {
 
                 if (query && hooks.length === 0) return null;
 
-                const isActiveSection = section.category === activeCategory;
-
-                // search matches stay open; active hook section always stays open
-                const isOpen = query
-                    ? true
-                    : Boolean(openSections[section.category]) || isActiveSection;
+                const isOpen = query ? true : Boolean(openSections[section.category]);
 
                 return (
                     <section key={section.category} className="sidebar-section">

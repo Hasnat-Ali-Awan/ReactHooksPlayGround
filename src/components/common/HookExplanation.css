@@ -1,0 +1,116 @@
+.hook-explain {
+    margin-top: 34px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+}
+
+.hook-explain__header {
+    margin-bottom: 20px;
+}
+
+.hook-explain__title {
+    margin: 0 0 8px;
+    font-size: 1.45rem;
+    color: var(--heading);
+}
+
+.hook-explain__subtitle {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+}
+
+.hook-explain__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.hook-explain__card {
+    padding: 18px 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    box-shadow: var(--shadow-sm);
+}
+
+.hook-explain__card--wide,
+.hook-explain__card--code {
+    margin-bottom: 16px;
+}
+
+.hook-explain__card h3 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+    color: #93c5fd;
+}
+
+html[data-theme="light"] .hook-explain__card h3 {
+    color: #2563eb;
+}
+
+.hook-explain__card p {
+    color: var(--text);
+    line-height: 1.65;
+}
+
+.hook-explain__list {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.hook-explain__list li + li {
+    margin-top: 8px;
+}
+
+.hook-explain__list--bullets {
+    list-style: disc;
+}
+
+.hook-explain__code-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.hook-explain__lang {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.hook-explain__pre {
+    margin: 0;
+    padding: 16px;
+    overflow-x: auto;
+    border-radius: var(--radius-sm);
+    background: #0b1220;
+    border: 1px solid #1e293b;
+    color: #e2e8f0;
+    font-family: var(--mono);
+    font-size: 0.86rem;
+    line-height: 1.55;
+}
+
+html[data-theme="light"] .hook-explain__pre {
+    background: #0f172a;
+    border-color: #1e293b;
+}
+
+.hook-explain__pre code {
+    font-family: inherit;
+    white-space: pre;
+}
+
+@media (max-width: 720px) {
+    .hook-explain__grid {
+        grid-template-columns: 1fr;
+    }
+}
