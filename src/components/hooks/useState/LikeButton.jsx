@@ -1,15 +1,27 @@
+import { useState } from "react";
+import { FaHeart } from "react-icons/fa6";
 import DemoCard from "../../common/DemoCard";
+import "./LikeButton.css";
 
-// TODO: Practice useState here!
-// Goal: make a like button that toggles between liked / not liked
 function LikeButton() {
+    const [isLiked, setLiked] = useState(false);
+
+    function handleLike() {
+        setLiked(!isLiked);
+    }
+
     return (
-        <DemoCard title="Your Turn: Like Button">
-            <div className="practice-box">
-                <p className="practice-hint">
-                    Use <code>useState</code> to toggle liked / not liked
-                </p>
-            </div>
+        <DemoCard title="Like Button Example">
+            <button
+                className={`like-button ${isLiked ? "liked" : ""}`}
+                onClick={handleLike}
+            >
+                <FaHeart color={isLiked ? "red" : "gray"} />
+            </button>
+
+            <p className="like-status">
+                {isLiked ? "Liked" : "Not Liked"}
+            </p>
         </DemoCard>
     );
 }
