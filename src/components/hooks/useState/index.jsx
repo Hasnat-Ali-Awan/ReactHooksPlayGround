@@ -5,7 +5,6 @@ function UseStateDemo() {
     return (
         <>
             <Counter />
-            <br />
             <LikeButton />
         </>
     );

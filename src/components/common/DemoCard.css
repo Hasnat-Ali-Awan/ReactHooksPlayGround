@@ -1,28 +1,88 @@
 .demo-card {
-    width: 350px;
+    position: relative;
+    width: 100%;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 40%),
+        var(--bg-card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    margin: 20px 0;
-    padding: 20px;
+.demo-card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
 
-    background-color: #1e293b;
-    color: white;
+.demo-card-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
 
-    border: 1px solid #334155;
-    border-radius: 12px;
+.demo-card--example .demo-card-badge {
+    background: var(--accent-soft);
+    color: #93c5fd;
+}
 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+.demo-card--practice {
+    border-style: dashed;
+    border-color: rgba(167, 139, 250, 0.45);
+    background:
+        linear-gradient(180deg, rgba(167, 139, 250, 0.06), transparent 45%),
+        var(--bg-card);
+}
+
+.demo-card--practice .demo-card-badge {
+    background: var(--practice-soft);
+    color: var(--practice);
 }
 
 .demo-card-title {
-    margin-bottom: 20px;
+    margin: 0 36px 18px 0;
+    font-size: 1.15rem;
+    font-weight: 650;
+    line-height: 1.3;
+    color: var(--heading);
+}
 
-    text-align: center;
+.demo-card--example .demo-card-title {
+    color: #93c5fd;
+}
 
-    color: #60a5fa;
+.demo-card--practice .demo-card-title {
+    color: #c4b5fd;
 }
 
 .demo-card-content {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
+    flex: 1;
+}
+
+.demo-card-content > p {
+    color: var(--text);
+    text-align: center;
+}
+
+.demo-card-content label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: left;
 }
