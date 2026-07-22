@@ -1,15 +1,27 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import hooksData from "../../data/hooksData";
 import "./Sidebar.css";
 
 function Sidebar({ search = "" }) {
+    const location = useLocation();
+
     const [openSections, setOpenSections] = useState(() =>
         Object.fromEntries(hooksData.map((section) => [section.category, true]))
     );
 
     const query = search.trim().toLowerCase();
+
+    const activeCategory =
+        hooksData.find((section) =>
+            section.hooks.some((hook) => hook.path === location.pathname)
+        )?.category ?? null;
+
+    useEffect(() => {
+        const activeLink = document.querySelector(".sidebar-link.active");
+        activeLink?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }, [location.pathname]);
 
     function toggleSection(category) {
         setOpenSections((prev) => ({
@@ -32,8 +44,12 @@ function Sidebar({ search = "" }) {
 
                 if (query && hooks.length === 0) return null;
 
-                // while searching, keep matching sections open
-                const isOpen = query ? true : openSections[section.category];
+                const isActiveSection = section.category === activeCategory;
+
+                // search matches stay open; active hook section always stays open
+                const isOpen = query
+                    ? true
+                    : Boolean(openSections[section.category]) || isActiveSection;
 
                 return (
                     <section key={section.category} className="sidebar-section">
