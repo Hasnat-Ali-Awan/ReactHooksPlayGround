@@ -22,7 +22,7 @@ function ThemeBox() {
 function ThemeToggle() {
     return (
         <DemoCard title="Theme Context">
-            <ThemeProvider>
+            <ThemeProvider scoped initialTheme="light">
                 <ThemeBox />
             </ThemeProvider>
         </DemoCard>

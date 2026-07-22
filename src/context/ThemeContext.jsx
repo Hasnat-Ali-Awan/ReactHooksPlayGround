@@ -1,21 +1,44 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useLayoutEffect, useState } from "react";
 
 const ThemeContext = createContext(null);
 
-export function ThemeProvider({ children }) {
-    const [theme, setTheme] = useState("light");
+function getInitialTheme() {
+    const saved = localStorage.getItem("app-theme");
+    if (saved === "light" || saved === "dark") return saved;
+    return "dark";
+}
+
+export function ThemeProvider({
+    children,
+    scoped = false,
+    initialTheme = "light",
+}) {
+    const [theme, setTheme] = useState(() =>
+        scoped ? initialTheme : getInitialTheme()
+    );
+
+    useLayoutEffect(() => {
+        if (scoped) return;
+
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("app-theme", theme);
+    }, [theme, scoped]);
 
     function toggleTheme() {
-        setTheme((prev) => (prev === "light" ? "dark" : "light"));
+        setTheme((prev) => (prev === "dark" ? "light" : "dark"));
     }
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
             {children}
         </ThemeContext.Provider>
     );
 }
 
 export function useTheme() {
-    return useContext(ThemeContext);
+    const context = useContext(ThemeContext);
+    if (!context) {
+        throw new Error("useTheme must be used inside ThemeProvider");
+    }
+    return context;
 }
